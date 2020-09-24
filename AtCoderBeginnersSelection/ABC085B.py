@@ -1,6 +1,8 @@
 if __name__ == "__main__":
     N = int(input())
-    d = [int(input()) for i in range(N)]
+    mochis = []
+    for n in range(N):
+        mochi = int(input())
+        mochis.append(mochi)
 
-    print(len(set(d)))
-        
+    print(len(set(mochis)))

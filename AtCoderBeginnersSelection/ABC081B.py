@@ -1,10 +1,10 @@
 if __name__ == "__main__":
     N = int(input())
-    ans = 0
+    A = list(map(int, input().split()))
+    count = 0
 
-    a_list = list(map(int, input().split()))
+    while all(a%2 == 0 for a in A):
+        A = [a/2 for a in A]
+        count += 1
 
-    while all(a%2==0 for a in a_list):
-        a_list = [a/2 for a in a_list]
-        ans += 1
-    print(ans)
+    print(count)

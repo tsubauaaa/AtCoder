@@ -1,11 +1,6 @@
-
-
 if __name__ == "__main__":
-    i = [input() for i in range(3)]
-    a = int(i[0])
-    b = int(i[1].split(' ')[0])
-    c = int(i[1].split(' ')[1])
-    s = i[2]
-    sum = a + b+ c
+    a = int(input())
+    b, c = map(int, input().split())
+    s = input()
 
-    print(f'{sum} {s}')
+    print(f'{a+b+c} {s}')

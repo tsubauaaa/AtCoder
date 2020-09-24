@@ -3,15 +3,13 @@ if __name__ == "__main__":
     ans10000 = -1
     ans5000 = -1
     ans1000 = -1
-    for a in range(0, N+1):
-        for b in range(0, N+1):
-            c = N - a - b
-            if c < 0:
+    for x in range(N+1):
+        for y in range(N+1):
+            z = N - x - y
+            if z < 0:
                 continue
-            if a*10000 + b*5000 + c*1000 == Y:
-                ans10000 = a
-                ans5000 = b
-                ans1000 = c
-
+            if 10000*x+5000*y+1000*z == Y:
+                ans10000 = x
+                ans5000 = y
+                ans1000 = z
     print(f'{ans10000} {ans5000} {ans1000}')
-    

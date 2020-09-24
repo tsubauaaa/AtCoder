@@ -1,17 +1,14 @@
 if __name__ == "__main__":
     N = int(input())
-    a_list = list(map(int, input().split()))
-    a_list.sort(reverse=True)
+    cards = list(map(int, input().split()))
+    cards.sort(reverse=True)
     alice = []
     bob = []
-    i = 0
-    for a in a_list:
-        if i % 2 == 0:
-            alice.append(a)
+    for index, card in enumerate(cards):
+        if index%2 == 0:
+            alice.append(card)
         else:
-            bob.append(a)
-        i += 1
+            bob.append(card)
 
-    print(sum(alice) - sum(bob))
+    print(sum(alice)-sum(bob))
 
-    
