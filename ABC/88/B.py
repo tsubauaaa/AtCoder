@@ -6,7 +6,7 @@ bob = []
 cards.sort(reverse=True)
 
 for i in range(N):
-    if i%2 == 0:
+    if i % 2 == 0:
         alice.append(cards[i])
     else:
         bob.append(cards[i])

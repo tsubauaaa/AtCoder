@@ -3,21 +3,19 @@ S = input()
 participants = 0
 i = 1
 for s in S:
-    if s == 'c':
-        print('No')
+    if s == "c":
+        print("No")
         continue
-    elif s == 'a':
-        if participants < A+B:
-            print('Yes')
+    elif s == "a":
+        if participants < A + B:
+            print("Yes")
             participants += 1
         else:
-            print('No')
-    elif s == 'b':
-        if participants < A+B and i <= B:
-            print('Yes')
+            print("No")
+    elif s == "b":
+        if participants < A + B and i <= B:
+            print("Yes")
             participants += 1
         else:
-            print('No')
+            print("No")
         i += 1
-    
-
