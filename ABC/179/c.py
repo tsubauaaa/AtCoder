@@ -1,29 +1,13 @@
-if __name__ == "__main__":
-    N = int(input())
+def solve():
     ans = 0
-    for i in range(1, N+1):
-        a = i
-        b = a+1
-        c = a+2
-        if a*b+c == N:
-            print(f'{a}*{b}+{c}')
-            ans += 1
+    for a in range(1, N):
+        for b in range(1, N):
+            c = N - a * b
+            if c > 0:
+                ans += 1
+    return ans
 
-        if a*(b-1)+c == N:
-            print(f'{a}*{b-1}+{c}')
-            ans += 1
-        if a*(b-1)+(c-1) == N:
-            print(f'{a}*{b-1}+{c-1}')
-            ans += 1
-        if a*(b-1)+(c-2) == N:
-            print(f'{a}*{b-1}+{c-2}')
-            ans += 1
 
-        if a*b+(c-1) == N:
-            print(f'{a}*{b}+{c-1}')
-            ans += 1
-        if a*b+(c-2) == N:
-            print(f'{a}*{b}+{c-2}')
-            ans += 1
-    
-    print(ans)
+N = int(input())
+ans = solve()
+print(ans)

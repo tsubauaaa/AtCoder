@@ -1,12 +1,11 @@
-if __name__ == "__main__":
-    s = input()
-    t = input()
+S = input()
+T = input()
+match = 0
+for i in range(len(S) - len(T) + 1):
+    tmp = 0
+    for j in range(len(T)):
+        if S[i + j] == T[j]:
+            tmp += 1
+    match = max(match, tmp)
 
-    for i, e in enumerate(t):
-        compare_t = t[0:len (t) - i]
-        if compare_t in s:
-            print(f'{s}, {compare_t}')
-
-    #         print(i+len(t) - len(t))
-            break
-    # print(len(t))
+print(len(T) - match)
