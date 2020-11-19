@@ -1,5 +1,6 @@
-N = int(input())
-D = list(map(int, input().split()))
-D.sort()
+import collections
 
-print(D[N//2] - D[N//2-1])
+N = int(input())
+S = ["".join(sorted(input())) for _ in range(N)]
+c = collections.Counter(S)
+print(c)
