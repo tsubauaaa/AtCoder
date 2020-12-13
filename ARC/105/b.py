@@ -1,7 +1,8 @@
+import math
+
 N = int(input())
-A = list(map(int, input().split()))
-X, x = max(A), min(A)
-while X != x:
-    A = [a - x if a == X else a for a in A]
-    X, x = max(A), min(A)
-print(X)
+a = list(map(int, input().split()))
+ans = a[0]
+for i in range(1, N):
+    ans = math.gcd(ans, a[i])
+print(ans)

@@ -1,9 +1,11 @@
 N = int(input())
-P = list(map(int, input().split()))
-used = [False] * 200000
-cur = 0
-for i in range(N):
-    used[P[i]] = True
-    while used[cur]:
-        cur += 1
-    print(cur)
+usable = [True] * (2 * 10 ** 5 + 1)
+nums = list(map(int, input().split()))
+ans = 0
+for num in nums:
+    usable[num] = False
+    for i in range(ans, len(usable)):
+        if usable[i]:
+            ans = i
+            print(ans)
+            break
