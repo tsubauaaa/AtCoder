@@ -1,0 +1,7 @@
+S = list(input())
+T = list(input())
+S.sort()
+T.sort(reverse=True)
+s = "".join(S)
+t = "".join(T)
+print("Yes" if s < t else "No")
