@@ -1,10 +1,12 @@
 X, K, D = map(int, input().split())
-remain = K - X // D
-if remain > 0:
-    if remain % 2 == 0:
-        print(abs(X - remain * D))
-    else:
-        print(X - remain * D)
-        print(abs(X - remain * D - D))
-else:
+X = abs(X)
+q = X // D
+remain = K - q
+r = X % D
+if remain < 0:
     print(X - K * D)
+else:
+    if remain % 2 == 0:
+        print(r)
+    else:
+        print(abs(r - D))
