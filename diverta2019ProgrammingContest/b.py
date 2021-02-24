@@ -1,8 +1,7 @@
 R, G, B, N = map(int, input().split())
 ans = 0
-for i in range(N + 1):
-    for j in range(N + 1):
-        for k in range(N + 1):
-            if R * i + G * j + B * k == N:
-                ans += 1
+for r in range(N // R + 1):
+    for g in range((N - R * r) // G + 1):
+        if (N - R * r - G * g) % B == 0:
+            ans += 1
 print(ans)
