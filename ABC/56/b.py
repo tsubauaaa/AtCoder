@@ -1,9 +1,6 @@
 W, a, b = map(int, input().split())
-print(a, a + W, b, b + W)
-
-if b < a + W and a + W < a + W:
-    print(a + W - b)
-elif a < b and b + W < a:
-    print(b - a)
-else:
-    print(0)
+A = [i for i in range(a, a + W + 1)]
+B = [i for i in range(b, b + W + 1)]
+A.sort()
+B.sort()
+print(0 if len(set(A) & set(B)) != 0 else B[0] - A[-1] if a + W < b else A[0] - B[-1])
