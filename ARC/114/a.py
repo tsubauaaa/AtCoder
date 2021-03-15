@@ -1,29 +1,26 @@
+import itertools
+import math
+
 N = int(input())
 X = list(map(int, input().split()))
 
+primes = []
+for i in range(2, 50):
+    for j in range(2, 51):
+        if i % j == 0:
+            break
+    if i == j:
+        primes.append(i)
 
-def prime_factorize(n):
-    a = []
-    while n % 2 == 0:
-        a.append(2)
-        n //= 2
-    f = 3
-    while f * f <= n:
-        if n % f == 0:
-            a.append(f)
-            n //= f
-        else:
-            f += 2
-    if n != 1:
-        a.append(n)
-    return min(a)
-
-
-primes = set()
-for x in X:
-    primes.add(prime_factorize(x))
-
-ans = 1
-for p in primes:
-    ans *= p
-print(ans)
+for i in range(1, 16):
+    for combs in itertools.combinations(primes, i):
+        y = 1
+        for comb in combs:
+            y *= comb
+        ans = [1] * N
+        for j in range(N):
+            if math.gcd(X[j], y) != 1:
+                ans[j] = 0
+        if sum(ans) == 0:
+            print(y)
+            exit()
