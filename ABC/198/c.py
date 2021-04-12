@@ -1,8 +1,11 @@
-from decimal import ROUND_CEILING, Decimal
+import math
 
 R, X, Y = map(int, input().split())
 
-ans = Decimal.sqrt(
-    Decimal(str(X)) ** Decimal("2") + Decimal(str(Y)) ** Decimal("2")
-) / Decimal(str(R))
-print(ans.quantize(Decimal("0"), rounding=ROUND_CEILING))
+d = math.sqrt(X ** 2 + Y ** 2)
+ans = 0
+if R > d:
+    ans = 2
+else:
+    ans = math.ceil(d / R)
+print(ans)
