@@ -1,10 +1,8 @@
-import math
-from itertools import combinations
-
-ans = 0
 A, B = map(int, input().split())
-nums = [i for i in range(A, B + 1)]
-ans = 0
-target = B // 2
-for i in range(B, A - 1, -1):
-    print(i)
+
+ans = 1
+for i in range(B, 0, -1):
+    if B // i - (A - 1) // i >= 2:
+        ans = i
+        break
+print(ans)
