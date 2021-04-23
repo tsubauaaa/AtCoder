@@ -1,7 +1,8 @@
+import math
+
 N = int(input())
-q = N // 26
-m = N % 26
-alphas = [
+
+alphabets = [
     "a",
     "b",
     "c",
@@ -29,14 +30,14 @@ alphas = [
     "y",
     "z",
 ]
-n = 1
-while True:
-    target = 0
-    for i in range(n):
-        target += 26 ** i
-    if target <= N < target + 26 ** n:
-        print(f"n: {n}, q: {q}, m: {m}")
-        ans = alphas[(q - 1)] * (n - 1) + alphas[m - 1]
-        print(ans)
-        break
-    n += 1
+
+i = 1
+ans = 0
+while ans < N:
+    ans += 26 ** i
+    i += 1
+
+for j in range(i - 1):
+    print(N, alphabets[int(N) % 26 - 1], int(N) % 26)
+    N /= 26
+    N -= N % 26
