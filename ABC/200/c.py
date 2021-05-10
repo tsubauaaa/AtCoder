@@ -1,10 +1,11 @@
+from collections import Counter
+
 N = int(input())
 A = list(map(int, input().split()))
-A.sort(reverse=True)
+R = [a % 200 for a in A]
+
 ans = 0
-for i in range(N):
-    for j in range(i + 1, N):
-        if (A[i] - A[j]) % 200 == 0:
-            print(A[i], A[j], A[i] % 200, A[j] % 200)
-            ans += 1
+for k, v in Counter(R).items():
+    if v > 1:
+        ans += v * (v - 1) // 2
 print(ans)
