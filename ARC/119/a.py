@@ -1,11 +1,9 @@
-import fractions
-
 N = int(input())
-i = 0
-while 2 ** i < 10 ** 18 + 1:
-    print(i)
-    a = N
-    b = 2 ** i
-    print(a % b)
-    print(float(fractions.Fraction(a) / fractions.Fraction(b)))
-    i += 1
+b = 0
+ans = 10 ** 18
+while 2 ** b < 10 ** 18 + 1:
+    a = N // 2 ** b
+    c = N % 2 ** b
+    ans = min(ans, a + b + c)
+    b += 1
+print(ans)
