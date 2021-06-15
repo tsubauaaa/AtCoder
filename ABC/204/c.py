@@ -1,53 +1,25 @@
-def connected_components(graph):
-    seen = set()
+import sys
 
-    def component(n):
-        nodes = set([n])
-        while nodes:
-            n = nodes.pop()
-            seen.add(n)
-            nodes |= set(graph[n]) - seen
-            yield n
-    for n in graph:
-        if n not in seen:
-            yield component(n)
-
-
-def print_gen(gen):
-    return [list(x) for x in gen]
-
+sys.setrecursionlimit(10 ** 6)
 
 N, M = map(int, input().split())
-f_graph = {i + 1: [] for i in range(N)}
-b_graph = {i + 1: [] for i in range(N)}
+routes = [[] for _ in range(N)]
 for i in range(M):
     A, B = map(int, input().split())
-    if A < B:
-        f_graph[A].append(B)
-    else:
-        b_graph[A].append(B)
-
-print(f_graph, b_graph)
-
-print(connected_components(b_graph))
-
-f_cons = [list(x) for x in connected_components(f_graph)]
-b_cons = [list(x) for x in connected_components(b_graph)]
-print(f_cons, b_cons)
+    routes[A - 1].append(B - 1)
 
 
-f = 0
-for f_con in f_cons:
-    f += len(f_con) * (len(f_con) - 1) // 2
+def dfs(a):
+    for b in routes[a]:
+        if not check[b]:
+            check[b] = True
+            dfs(b)
 
-b = 0
-is_turned = False
-for b_con in b_cons:
-    b += len(b_con) * (len(b_con) - 1) // 2
-    if b_con == [1, N]:
-        is_turned = True
 
-if len(f_cons) == 1 and is_turned:
-    print(N * N)
-else:
-    print(N + f + b)
+ans = 0
+for i in range(N):
+    check = [False] * N
+    check[i] = True
+    dfs(i)
+    ans += sum(check)
+print(ans)
