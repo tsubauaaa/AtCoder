@@ -1,23 +1,28 @@
-def find(x):
-    if parents[x] == x:
-        return x
-    else:
-        parents[x] = find(parents[x])
-        return parents[x]
-
-
-def unite(x, y):
-    x = find(x)
-    y = find(y)
-    if x == y:
-        return 
-    parents[x] = y
-
+import sys
+sys.setrecursionlimit(10 ** 9)
 
 N, M = map(int, input().split())
-parents = [i for i in range(N + 1)]
-for _ in range(M):
-    A, B = map(lambda x: int(x) - 1, input().split())
-    unite(A, B)
+G = {i: [] for i in range(N)}
+for i in range(M):
+    A, B = map(int, input().split())
+    A, B = A - 1, B - 1
+    G[A].append(B)
+    G[B].append(A)
 
-print(parents)
+
+def dfs(n):
+    visited[n] = True
+    for g in G[n]:
+        if not visited[g]:
+            dfs(g)
+
+
+ans = 0
+visited = [False] * N
+for i in range(N):
+    if visited[i]:
+        continue
+    dfs(i)
+    ans += 1
+
+print(ans - 1)
