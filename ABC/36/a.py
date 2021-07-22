@@ -1,2 +1,4 @@
-S = input()
-print("YES" if S[-1] == "T" else "NO")
+import math
+A, B = map(int, input().split())
+
+print(math.ceil(B / A))
