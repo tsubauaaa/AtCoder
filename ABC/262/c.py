@@ -7,7 +7,7 @@ for i in range(N):
 
 sorted_memo = sorted(memo.items(), key=lambda i: i[1])
 
-# print(dict(sorted_memo))
+print(dict(sorted_memo))
 ans = 0
 for k, v in dict(sorted_memo).items():
     if memo[v] == k:
