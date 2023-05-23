@@ -1,20 +1,33 @@
-rows = []
-for _ in range(3):
-    A = list(map(int, input().split()))
-    rows.append(A)
-
+bingo = []
+for i in range(3):
+    bingo.append(list(map(int, input().split())))
 N = int(input())
+nums = []
+for i in range(N):
+    nums.append(int(input()))
+paper = []
+for i in range(N):
+    for j in range(3):
+        for k in range(3):
+            if bingo[j][k] == nums[i]:
+                paper.append([j+1, k+1])
+ans = 0
+hits = [[[1, 1], [2, 1], [3, 1]],
+        [[1, 2], [2, 2], [3, 2]],
+        [[1, 3], [2, 3], [3, 3]],
+        [[1, 1], [1, 2], [1, 3]],
+        [[2, 1], [2, 2], [2, 3]],
+        [[3, 1], [3, 2], [3, 3]],
+        [[1, 1], [2, 2], [3, 3]],
+        [[1, 3], [2, 2], [3, 1]]
+        ]
 
-for _ in range(N):
-    b = int(input())
-    for i in range(3):
-        for j in range(3):
-            if rows[i][j] == b:
-                rows[i][j] = 0
-
-if rows[0][0]+rows[0][1]+rows[0][2] == 0 or rows[1][0]+rows[1][1]+rows[1][2] == 0 or rows[2][0]+rows[2][1]+rows[2][2] == 0 \
-    or rows[0][0]+rows[1][0]+rows[2][0] == 0 or rows[0][1]+rows[1][1]+rows[2][1] == 0 or rows[0][2]+rows[1][2]+rows[2][2] == 0 \
-    or rows[0][0]+rows[1][1]+rows[2][2] == 0 or rows[0][2]+rows[1][1]+rows[2][0] == 0:
-    print('Yes')
-else:
-    print('No')
+for h in hits:
+    ans = 0
+    for p in paper:
+        if p in h:
+            ans += 1
+    if ans == 3:
+        print("Yes")
+        exit()
+print("No")
