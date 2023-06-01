@@ -1,15 +1,15 @@
-def is_ok(n):
-    return A * n + B * len(str(n)) <= X
-
-
 A, B, X = map(int, input().split())
 
-left = 0
-right = 10 ** 9 + 1
-while right - left > 1:
-    mid = (left + right) // 2
-    if is_ok(mid):
-        left = mid
+ok = 0
+ng = 10**9+1
+
+while abs(ok-ng) > 1:
+    mid = (ok+ng)//2
+    d = len(str(mid))
+    price = A * mid + B * d
+    if price <= X:
+        ok = mid
     else:
-        right = mid
-print(left)
+        ng = mid
+
+print(ok)
