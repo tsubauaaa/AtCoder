@@ -1,33 +1,45 @@
+card = []
 bingo = []
 for i in range(3):
-    bingo.append(list(map(int, input().split())))
+    card.append(list(map(int, input().split())))
+    bingo.append([False]*3)
+
 N = int(input())
-nums = []
+
 for i in range(N):
-    nums.append(int(input()))
-paper = []
-for i in range(N):
+    num = int(input())
     for j in range(3):
         for k in range(3):
-            if bingo[j][k] == nums[i]:
-                paper.append([j+1, k+1])
-ans = 0
-hits = [[[1, 1], [2, 1], [3, 1]],
-        [[1, 2], [2, 2], [3, 2]],
-        [[1, 3], [2, 3], [3, 3]],
-        [[1, 1], [1, 2], [1, 3]],
-        [[2, 1], [2, 2], [2, 3]],
-        [[3, 1], [3, 2], [3, 3]],
-        [[1, 1], [2, 2], [3, 3]],
-        [[1, 3], [2, 2], [3, 1]]
-        ]
+            if card[j][k] == num:
+                bingo[j][k] = True
 
-for h in hits:
-    ans = 0
-    for p in paper:
-        if p in h:
-            ans += 1
-    if ans == 3:
-        print("Yes")
-        exit()
-print("No")
+ans = False
+
+if (bingo[0][0] and bingo[0][1] and bingo[0][2]):
+    ans = True
+
+if (bingo[1][0] and bingo[1][1] and bingo[1][2]):
+    ans = True
+
+if (bingo[2][0] and bingo[2][1] and bingo[2][2]):
+    ans = True
+
+if (bingo[0][0] and bingo[1][0] and bingo[2][0]):
+    ans = True
+
+if (bingo[0][1] and bingo[1][1] and bingo[2][1]):
+    ans = True
+
+if (bingo[0][2] and bingo[1][2] and bingo[2][2]):
+    ans = True
+
+if (bingo[0][0] and bingo[1][1] and bingo[2][2]):
+    ans = True
+
+if (bingo[0][2] and bingo[1][1] and bingo[2][0]):
+    ans = True
+
+if ans:
+    print("Yes")
+else:
+    print("No")

@@ -1,21 +1,24 @@
 N = int(input())
 masu = []
 ans = []
-for _ in range(N):
-    s = input()
-    ss = []
-    for i in range(2*N-1):
-        ss.append(s[i])
-    masu.append(ss)
-    ans.append(ss)
+for i in range(N):
+    S = input()
+    row = []
+    for j in range(2*N-1):
+        row.append(S[j])
+    masu.append(row)
+    ans.append(masu[i])
 
-for i in range(N-2, -1, -1):
-    for j in range(2 * N - 1):
-        if 1 <= j <= 2 * N - 3:
-            if masu[i][j] != "#":
+print(masu)
+
+for i in range(N-1, -1, -1):
+    for j in range(2, 2*N-1):
+        if masu[i][j] == "#":
+            print(i, j)
+            if i+1 > N - 1:
                 continue
             if masu[i+1][j-1] == "X" or masu[i+1][j] == "X" or masu[i+1][j+1] == "X":
                 ans[i][j] = "X"
 
-for ai in ans:
-    print(''.join(ai))
+for ansi in ans:
+    print("".join(ansi))
