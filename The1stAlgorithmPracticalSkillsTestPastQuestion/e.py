@@ -1,35 +1,36 @@
 N, Q = map(int, input().split())
-graph = [[False for _ in range(N)] for _ in range(N)]
+graph = [[False] * N for _ in range(N)]
 
-for i in range(Q):
-    S = list(map(int, input().split()))
-    a = S[1] - 1
-    if S[0] == 1:
-        b = S[2] - 1
+for _ in range(Q):
+    log = list(map(int, input().split()))
+    check = log[0]
+    a = log[1] - 1
+    if check == 1:
+        b = log[2] - 1
         graph[a][b] = True
-    elif S[0] == 2:
+    elif check == 2:
         for i in range(N):
             if i == a:
                 continue
-            for _ in range(N):
-                if graph[i][a]:
-                    graph[a][i] = True
+            if graph[i][a]:
+                graph[a][i] = True
     else:
-        X = []
+        xs = []
         for i in range(N):
             if graph[a][i]:
-                X.append(i)
-        for x in X:
+                xs.append(i)
+        for x in xs:
             for i in range(N):
                 if i == a:
                     continue
                 if graph[x][i]:
                     graph[a][i] = True
-for gi in graph:
-    ans = ""
-    for gii in gi:
-        if gii:
-            ans += "Y"
-        else:
-            ans += "N"
-    print(ans)
+
+for i in range(N):
+    row = ""
+    for j in range(N):
+        YN = "N"
+        if graph[i][j]:
+            YN = "Y"
+        row += YN
+    print(row)

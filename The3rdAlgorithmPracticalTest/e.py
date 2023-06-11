@@ -1,23 +1,26 @@
 N, M, Q = map(int, input().split())
-graph = [[] for i in range(N)]
+graph = [[] for _ in range(N)]
 for i in range(M):
     u, v = map(int, input().split())
-    graph[u-1].append(v-1)
-    graph[v-1].append(u-1)
+    u -= 1
+    v -= 1
+    graph[u].append(v)
+    graph[v].append(u)
 
 colors = list(map(int, input().split()))
 ans = []
 for _ in range(Q):
-    s = list(map(int, input().split()))
-    x = s[1] - 1
-    if s[0] == 1:
-        ans.append(colors[x])
-        for gx in graph[x]:
-            colors[gx] = colors[x]
+    query = list(map(int, input().split()))
+    first = query[0]
+    x = query[1] - 1
+    color = colors[x]
+    ans.append(color)
+    if first == 1:
+        for p in graph[x]:
+            colors[p] = color
     else:
-        y = s[2]
-        ans.append(colors[x])
+        y = query[2]
         colors[x] = y
 
-for ai in ans:
-    print(ai)
+for ansi in ans:
+    print(ansi)
